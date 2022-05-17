@@ -2,7 +2,7 @@
 set -euo pipefail
 IFS=$'\n\t'
 
-DIRCTORY=$(dirname $0)
+DIRECTORY=$(dirname $0)
 pushd $DIRECTORY
 pipenv install
 pipenv run python generate.py
