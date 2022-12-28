@@ -46,4 +46,11 @@ if __name__ == '__main__':
 
     for (id, name) in FEEDS:
         fg = generate_feed(id, name)
-        fg.rss_file(f"feeds/{name}.xml")
+        output = f"feeds/{name}.xml"
+        fg.rss_file(output)
+        # annoying encoding fix
+        with open(output, 'r') as file :
+            filedata = file.read()
+        filedata = filedata.replace('&amp;ttl=', '&ttl=')
+        with open(output, 'w') as file:
+            file.write(filedata)
